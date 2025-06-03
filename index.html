@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Weather Forecast</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Favorites Sidebar -->
+        <div class="favorites-panel">
+            <div class="favorites-header">
+                <h2><i class="fas fa-star"></i> Favorite Cities</h2>
+                <button class="close-favorites" id="closeFavorites">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="favorites-list" id="favoritesList">
+                <!-- Favorites will be added here dynamically -->
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="header">
+                <h1 class="app-title">Weather Forecast <i class="fas fa-cloud-sun"></i></h1>
+                <div class="search-container">
+                    <div class="search">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="city-input" placeholder="Enter city name" spellcheck="false">
+                        <button class="voice-btn" id="voiceSearchBtn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                    <div class="date-picker">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" class="date-input" id="forecastDate">
+                    </div>
+                    <button class="search-btn">
+                        <i class="fas fa-location-arrow"></i>
+                        Get Weather
+                    </button>
+                </div>
+            </div>
+
+            <div class="error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Invalid city name or date</p>
+            </div>
+
+            <div class="weather">
+                <div class="current-weather">
+                    <div class="weather-main">
+                        <img src="images/rain.png" class="weather-icon" alt="Weather">
+                        <div class="temp-container">
+                            <h1 class="temp">22°c</h1>
+                            <p class="feels-like">Feels like: 24°c</p>
+                        </div>
+                    </div>
+                    <div class="weather-info">
+                        <h2 class="city">New York</h2>
+                        <p class="date">Wednesday, June 4, 2025</p>
+                        <p class="weather-description">Partly Cloudy</p>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <div>
+                                <p class="humidity">50%</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <div>
+                                <p class="wind">15 km/h</p>
+                                <p>Wind Speed</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-temperature-high"></i>
+                            <div>
+                                <p class="pressure">1015 hPa</p>
+                                <p>Pressure</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <p class="visibility">10 km</p>
+                                <p>Visibility</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast">
+                    <h3>15-Day Forecast <i class="fas fa-calendar-week"></i></h3>
+                    <div class="forecast-container"></div>
+                </div>
+            </div>
+
+            <div class="additional-features">
+                <button class="feature-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i>
+                    Share
+                </button>
+                <button class="feature-btn" id="locationBtn">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Current Location
+                </button>
+                <button class="feature-btn" id="favBtn">
+                    <i class="fas fa-heart"></i>
+                    Add to Favorites
+                </button>
+                <button class="feature-btn" id="showFavoritesBtn">
+                    <i class="fas fa-star"></i>
+                    Show Favorites
+                </button>
+            </div>
+
+            <div class="notification-scheduler">
+                <button class="feature-btn" id="showNotificationBtn">
+                    <i class="fas fa-bell"></i>
+                    Weather Alerts
+                </button>
+            </div>
+
+            <div class="notification-modal">
+                <div class="notification-content">
+                    <div class="notification-header">
+                        <h2><i class="fas fa-bell"></i> Weather Alerts</h2>
+                        <button class="close-modal" id="closeNotificationModal">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="notification-body">
+                        <div class="notification-settings">
+                            <h3>AI Weather Assistant</h3>
+                            <p class="ai-suggestion"></p>
+                            <div class="notification-type">
+                                <label>Alert me for:</label>
+                                <select id="notificationType" multiple>
+                                    <option value="rain">Rain</option>
+                                    <option value="extreme">Extreme Weather</option>
+                                    <option value="temperature">Temperature Changes</option>
+                                    <option value="humidity">High Humidity</option>
+                                    <option value="wind">Strong Winds</option>
+                                </select>
+                            </div>
+                            <div class="notification-time">
+                                <label>Preferred Time:</label>
+                                <input type="time" id="notificationTime">
+                            </div>
+                            <div class="notification-frequency">
+                                <label>Frequency:</label>
+                                <select id="notificationFrequency">
+                                    <option value="daily">Daily</option>
+                                    <option value="weather-change">On Weather Change</option>
+                                    <option value="extreme">Extreme Conditions Only</option>
+                                </select>
+                            </div>
+                            <div class="active-notifications">
+                                <h3>Active Alerts</h3>
+                                <div id="activeNotificationsList">
+                                    <!-- Active notifications will be listed here -->
+                                </div>
+                            </div>
+                        </div>
+                        <button class="feature-btn save-notifications" id="saveNotifications">
+                            <i class="fas fa-save"></i>
+                            Save Alerts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="weather.js"></script>
+</body>
+
+</html>
