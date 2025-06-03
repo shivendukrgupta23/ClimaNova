@@ -23,6 +23,9 @@ This was a personal project to improve my frontend skills and explore how AI can
 - Showing browser notifications
 - Basic AI logic for pattern recognition and user suggestions
 
+- You can also try the live demo here:
+-[Live demo]  https://shivendukrgupta23.github.io/ClimaNova/
+
 - ## 📁 Tech Used
 
 - HTML / CSS / JavaScript
